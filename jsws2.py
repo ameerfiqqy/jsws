@@ -52,9 +52,10 @@ def get_record(card):
     job_posted = job_posted_tag.text.strip()
 
     today = datetime.datetime.now().strftime("%d-%m-%Y")
+    website_origin = 'Jobstreet'
     
     # record = (job_title , companies , locations , salaries , job_categories , job_benefits , job_summaries , today, job_posted , job_url)
-    record = (job_title , companies , locations , salaries , job_categories , job_benefits , today, job_posted , job_url)
+    record = (job_title , companies , locations , salaries , job_categories , job_benefits , today, job_posted , website_origin , job_url)
 
     return record
 
@@ -83,9 +84,9 @@ def main(position,location):
     with open('jobslisting.csv','w', newline='',encoding='utf-8') as f:
         write = csv.writer(f)
         # write.writerow(['Job Title','Company','Location','Salary','Category','Benefits','Summary', 'Extract Date','Posted Date','Job URL'])
-        write.writerow(['Job Title','Company','Location','Salary','Category','Benefits','Extract Date','Posted Date','Job URL'])
+        write.writerow(['Job Title','Company','Location','Salary','Category','Benefits','Extract Date','Posted Date', 'Website' , 'Job URL'])
         write.writerows(records)
 
 # Main Program add "-" at the end of position and begining of location
-main('engineer-','-sarawak')
+main('','-Kuching')
 
